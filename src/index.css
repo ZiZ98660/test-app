@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -11,3 +13,95 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#unreveal{
+  opacity: .54;
+}
+
+
+#check>div{
+  background-color: white !important;
+  outline: 0.5px grey solid;
+  transition: 250ms;
+}
+
+#check svg{
+  opacity: 0;
+}
+
+.select{
+  display: block;
+  width: 33em !important;
+}
+
+.css-1s2u09g-control{
+  min-height: 3.5em;
+}
+
+.css-g1d714-ValueContainer>div:nth-child(1){
+  width:max-content !important;
+}
+
+
+#loader{
+  justify-content: space-around;
+
+}
+
+
+
+
+#loader div{
+  height: 1em;
+  width: 1em;
+  justify-self: end !important;
+  /* margin-right: .5em; */
+  border: 0.25em solid transparent;
+  border-top-color: white;
+  border-radius: 50%;
+  animation: loader 1s ease infinite;
+}
+
+#loader span{
+  margin: 0;
+}
+
+@keyframes loader {
+  from{
+    transform: rotate(0turn);
+  }
+
+  to{
+    transform: rotate(1turn);
+  }
+}
+
+#unoReverse{
+ transition: 170ms ;
+ transform: rotate(180deg);
+}
+
+/* @keyframes reverse {
+  from{
+    transform: rotate(0turn);
+  }
+
+  to{
+    transform: rotate(1turn);
+  }
+} */
+
+
+
+
+
+#drop-down + div{
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* #drop-down + div:hover{
+  transition: none;
+} */
+
