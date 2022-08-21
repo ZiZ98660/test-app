@@ -1,7 +1,6 @@
 import Button from "../buttons/buttons"
 import { CustomTable } from "../styledTable/table"
-import { TableContainer, MaintenanceTable, CardDiv } from "../styledTable/table.styled"
-import { Container } from "react-bootstrap"
+import { TableContainer, MaintenanceTable } from "../styledTable/table.styled"
 import TableData from "../styledTable/maintenance.json"
 import { Modal } from "react-bootstrap"
 import CustomModal from "./Modal/Modal"
@@ -73,6 +72,7 @@ const StyledTable = () => {
     >
       <CustomModal
       onClick={()=>setShow(!show)}
+      setShow = {setShow}
        />
     </Modal>
     

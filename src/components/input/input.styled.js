@@ -96,6 +96,7 @@ export const SelectWrapper = styled.div`
     }
 
     select{
+        cursor: ${({disabled}) => (disabled ? 'not-allowed' : ``)}; 
         background: ${({selectBG}) => (selectBG || `#FFFFFF`)};
         border: 1px solid #E3E6E8;
         border-radius: 0.5em;

@@ -27,7 +27,7 @@ const Button = ({
     onClose,
     loaderContent 
   }) => {
-    const [loading, setLoader] = useState('')
+    const [loading, setLoader] = useState('loader')
     return (
       <ButtonContainer
         id = {loader ? ( loading ? 'loader' : '' ) : ''}

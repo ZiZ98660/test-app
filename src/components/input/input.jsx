@@ -157,7 +157,7 @@ export const SelectInput = ({
   }) => {
     
 
-
+    
     const[reveal, setReveal] =useState('')
     return (
         <SelectWrapper
@@ -177,7 +177,7 @@ export const SelectInput = ({
             selectBG = {selectBG}
             selectHeight = {selectHeight}
             disabled = {disabled}
-            onChange={(e) => onChange(e)}
+            onChange={onChange}
             value={value}
             defaultValue={defaultValue}
             >

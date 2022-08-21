@@ -66,14 +66,15 @@ margin-bottom: 2em;
 div:nth-child(1){
   display: grid;
   box-sizing: border-box;
-  div{
+  &>div{
     place-items: center;
     color: red;
     height: 76.9%;
     width: 94.2%;
     background-color: white;
     border-radius: 6px;
-    margin: auto
+    margin: auto;
+    transition: 250ms ease-in;
   }
   flex: 50%;
 }
@@ -81,7 +82,16 @@ div:nth-child(1){
   div:nth-child(2){
     display: grid;
     place-items: center;
+    box-sizing: border-box;
     color: black;
     flex: 50%;
+    &>div{
+    place-items: center;
+    height: 76.9%;
+    width: 94.2%;
+    border-radius: 6px;
+    margin: auto;
+    transition: 250ms ease-in;
+  }
   }
 `
