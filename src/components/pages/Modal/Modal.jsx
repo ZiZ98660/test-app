@@ -8,7 +8,7 @@ import { useState } from 'react'
 
 import React from 'react'
 
-const CustomModal = ({onClick, setShow}) => {
+const CustomModal = ({onClick, setShow, }) => {
 
   const[toggle, setToggle] = useState('');
 
@@ -16,56 +16,78 @@ const CustomModal = ({onClick, setShow}) => {
   const[status, setStatus] = useState('')
   const[equipment, setEquipment] = useState('')
   const[equipmentType, setEquipmentType] = useState('')
+  const[systemType, setSystemType] = useState('')
 
   
 
-  const[loading, setLoading] = useState(false)
+  const[submit, setSubmit] = useState(false)
+
+  const onLocation = () => {
+    setToggle('')
+  }
+
+  const onSystemType = () => {
+    setToggle('toggle')
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setLoading(true)
+    setSubmit(true)
     setTimeout(() => {
-      setLoading(false)
+      setSubmit(false)
       setEquipment('')
       setLocation('')
+      setSystemType('')
       setEquipmentType('')
       setStatus('')
       setShow(false)
     }, 2600)
   }
 
+  
+
   return (
-        <FormCtrl onSubmit = {handleSubmit}>
+        <FormCtrl  
+        id = {toggle ? 'render' : 'rerender'}
+        onSubmit = {handleSubmit}>
     <FormTitle titleHeaderContent= 'Maintenance Input' titleHeaderFontSize='26px'  />
     <Slider
     id={toggle ? 'toggle' : ''}
     >
         <div
-         onClick={ () => setToggle('') } 
+         onClick={ onLocation } 
         >
           <div>
             Location
           </div>
         </div>
         <div
-         onClick={ () => setToggle('toggle') } 
+         onClick={ onSystemType } 
         >
           <div>
           System Type
           </div>
         </div>
       </Slider>
-      <SelectInput
-      disabled={loading ? 'disabled' : ''} 
+      {!toggle ? <SelectInput
+      disabled={submit ? 'disabled' : ''} 
       onChange = {(e)=>setLocation(e.target.value)}
       labelTitle='Location' 
       placeholder= 'Location'  
-        marginBottom='2.5em'
-        options={TableData.Location}
-        authName = 'Location'
-      />
+      marginBottom='2.5em'
+      options={TableData.Location}
+      /> :
       <SelectInput
-      disabled={loading ? 'disabled' : ''}
+      disabled={submit ? 'disabled' : ''} 
+      onChange = {toggle ? (e)=>setSystemType(e.target.value) : ''}
+      labelTitle='System Type' 
+      placeholder= 'System Type'  
+      marginBottom='2.5em'
+      options={TableData.SystemTypes}
+      />}
+
+      <SelectInput
+      disabled={submit ? 'disabled' : ''}
       onChange = {(e)=>setEquipment(e.target.value)}
       labelTitle='Equipment' 
       placeholder= 'Equipment'
@@ -73,7 +95,7 @@ const CustomModal = ({onClick, setShow}) => {
         options={TableData.Equipment}
         />
       <SelectInput 
-      disabled={loading ? 'disabled' : ''}
+      disabled={submit ? 'disabled' : ''}
       onChange={(e)=>setEquipmentType(e.target.value)}
       labelTitle='Equipment Type'
       placeholder= 'Equipment Type' 
@@ -81,7 +103,7 @@ const CustomModal = ({onClick, setShow}) => {
       options={TableData.equipmentType}
       />
       <SelectInput 
-      disabled={loading ? 'disabled' : ''}
+      disabled={submit ? 'disabled' : ''}
       onChange={(e) => setStatus(e.target.value)}
       labelTitle='Status' 
       placeholder= 'Status' 
@@ -120,14 +142,14 @@ const CustomModal = ({onClick, setShow}) => {
           content= 'Cancel'
           />
           <Button 
-          disabled= {location === '' || status === '' || equipment === '' || equipmentType === ''} 
-          loader = {loading}
+          disabled= {( !toggle? location === '' : systemType === '' )|| status === '' || equipment === '' || equipmentType === '' } 
+          loader = {submit}
           background= 'red'
           borderWidth= '0'
           outline= 'red'
           color= 'white'
           loaderContent= 'Submit'
-          content = {!loading ? 'Submit' : ''}
+          content = {!submit ? 'Submit' : ''}
           />
           </div>
         

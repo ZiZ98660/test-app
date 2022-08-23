@@ -11,7 +11,7 @@ export const FormCtrl = styled.form`
     padding: ${({padding}) => (padding ||`0.7em 1.5em`)}; 
     box-sizing: border-box;
     display: grid;
-
+    opacity: 1;
    
 
 `
